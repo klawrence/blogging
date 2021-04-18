@@ -171,6 +171,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    strip_attributes (1.11.0)
+      activemodel (>= 3.0, < 7.0)
     thor (1.1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
@@ -213,7 +215,7 @@ DEPENDENCIES
   rails (~> 6.1.3, >= 6.1.3.1)
   sass-rails (>= 6)
   selenium-webdriver
-  tzinfo-data
+  strip_attributes
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
