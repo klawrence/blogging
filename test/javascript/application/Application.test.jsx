@@ -1,11 +1,5 @@
 import React from 'react'
-import {mount} from 'enzyme'
-import {configure} from 'enzyme'
-
-// import Adapter from 'enzyme-adapter-react-17'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-
-configure({ adapter: new Adapter() })
+import {display, assert_select} from '../helpers/ReactHelper'
 
 import {Application} from 'application/Application'
 
@@ -24,12 +18,10 @@ describe('The application', () => {
   })
 
   test('shows the first blog post', async () => {
-    const component = await mount(<Application />)
+    const component = await display(<Application />)
 
-    expect(component.find('.site-name').text()).toEqual('Blogging')
-    expect(component.find('.title').text()).toEqual('React on Rails')
-    expect(component.find('.body').text()).toEqual('I can use React with Rails.')
-
-    expect(server.send).toBeCalledWith('/posts/1.json')
+    assert_select(component, '.site-name',   'Blogging')
+    assert_select(component, '.post .title', 'React on Rails')
+    assert_select(component, '.post .body',  'I can use React with Rails.')
   })
 })
