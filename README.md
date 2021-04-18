@@ -1,5 +1,7 @@
 # React on Rails — A Tutorial
 
+<a href="https://circleci.com/gh/klawrence/blogging"><img src="https://circleci.com/gh/klawrence/blogging.svg?style=svg"></a>
+
 ## Where Do We Come From?
 This started out as a learning exercise for me and morphed into a React tutorial
 for Rails developers somewhere along the way.

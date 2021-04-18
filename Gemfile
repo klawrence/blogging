@@ -42,6 +42,7 @@ end
 
 group :test do
   gem 'minitest'
+  gem 'minitest-ci'
 
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
