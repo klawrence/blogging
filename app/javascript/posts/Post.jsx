@@ -1,4 +1,5 @@
 import React from 'react'
+import * as axios from 'axios'
 
 export function Post({post}) {
   return <div className='post'>
@@ -6,11 +7,26 @@ export function Post({post}) {
     <div className='body'>{post.body}</div>
   </div>
 }
-export default function ConnectedPost() {
-  const post = {
-    id: 1,
-    title: 'React on Rails',
-    body: 'I can use React with Rails.',
+
+export default class ConnectedPost extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      post: {}
+    }
   }
-  return <Post post={post} />
+  render() {
+    const {post} = this.state
+    return <Post post={post} />
+  }
+
+  componentDidMount() {
+    const request = {
+      url: '/posts/1.json'
+    }
+    return axios(request).then(response => {
+      const post = response.data
+      this.setState({post})
+    })
+  }
 }
