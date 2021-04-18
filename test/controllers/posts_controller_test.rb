@@ -20,4 +20,23 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'The body.', json[:body]
   end
 
+  test 'create a blog post' do
+    post posts_url(format: :json), params: {
+        post: {
+            title: 'A new day',
+            body: 'First post!'
+        }
+    }
+    assert_response :success
+    json = JSON.parse response.body, symbolize_names: true
+
+    # The post was created
+    @post = Post.last
+    assert_equal 'A new day', @post.title
+
+    # Return the post as JSON
+    assert_equal @post.id, json[:id]
+    assert_equal 'A new day', json[:title]
+  end
+
 end
