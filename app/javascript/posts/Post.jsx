@@ -1,5 +1,5 @@
 import React from 'react'
-import * as axios from 'axios'
+import {fetch} from './api'
 
 export function Post({post}) {
   return <div className='post'>
