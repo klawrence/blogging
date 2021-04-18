@@ -20,13 +20,8 @@ export default class ConnectedPost extends React.Component {
     return <Post post={post} />
   }
 
-  componentDidMount() {
-    const request = {
-      url: '/posts/1.json'
-    }
-    return axios(request).then(response => {
-      const post = response.data
-      this.setState({post})
-    })
+  async componentDidMount() {
+    const post = await fetch(1)
+    this.setState({post})
   }
 }
