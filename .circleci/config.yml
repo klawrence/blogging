@@ -42,10 +42,10 @@ jobs:
           name: ruby tests
           command: bundle exec rake test
 
-      - run: yarn install
+      - run: yarn add --dev jest-junit
       - run:
           name: javascript tests
-          command: yarn jest test/javascript --ci --runInBand --reporters=default
+          command: yarn jest test/javascript --ci --runInBand --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: ~/work/test/reports
 
