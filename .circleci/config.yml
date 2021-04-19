@@ -45,7 +45,7 @@ jobs:
       - run: yarn install
       - run:
           name: javascript tests
-          command: yarn jest test/javascript --ci --runInBand --reporters=default --reporters=jest-junit
+          command: yarn jest test/javascript --ci --runInBand --reporters=default
           environment:
             JEST_JUNIT_OUTPUT_DIR: ~/work/test/reports
 
