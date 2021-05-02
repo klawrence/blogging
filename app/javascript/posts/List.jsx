@@ -1,5 +1,5 @@
 import React from 'react'
-import {list} from './api'
+import {store} from './Store'
 import {Post} from './Post'
 
 export function List({posts}) {
@@ -27,7 +27,7 @@ export default class ConnectedList extends React.Component {
   }
 
   async componentDidMount() {
-    const response = await list()
-    this.setState({posts: response.posts})
+    const posts = await store.list()
+    this.setState({posts})
   }
 }
