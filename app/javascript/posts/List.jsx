@@ -2,7 +2,17 @@ import React from 'react'
 import {list} from './api'
 import {Post} from './Post'
 
-export default class List extends React.Component {
+export function List({posts}) {
+  return <ul className='posts-list'>
+    {
+      posts.map(post => <li key={post.id}>
+        <Post post={post}/>
+      </li>)
+    }
+  </ul>
+}
+
+export default class ConnectedList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,13 +24,7 @@ export default class List extends React.Component {
     const {posts} = this.state
     if(posts === null) return 'Loading…'
 
-    return <ul className='posts-list'>
-      {
-        posts.map(post => <li key={post.id}>
-          <Post post={post}/>
-        </li>)
-      }
-    </ul>
+    return <List posts={posts} />
   }
 
   async componentDidMount() {
