@@ -14,14 +14,19 @@ describe('The application', () => {
       title: 'React on Rails',
       body: 'I can use React with Rails.',
     }
-    server.send.mockReturnValue(post)
+    server.send.mockReturnValue({posts: [post]})
   })
 
   test('shows the first blog post', async () => {
     const component = await display(<Application />)
+    component.update()
 
     assert_select(component, '.site-name',   'Blogging')
     assert_select(component, '.post .title', 'React on Rails')
     assert_select(component, '.post .body',  'I can use React with Rails.')
+
+    const calls = server.send.mock.calls
+    expect(calls.length).toBe(1)
+    expect(calls[0]).toEqual(['/posts.json'])
   })
 })
