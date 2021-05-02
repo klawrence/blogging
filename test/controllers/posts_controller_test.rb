@@ -5,9 +5,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = Post.create! title: 'The title', body: 'The body.'
   end
 
-  test 'should get index' do
+  test 'the index page just returns the react application' do
     get posts_url
+    assert_select '#react'
+  end
+
+  test 'fetch a list of posts as json' do
+    get posts_url(format: :json)
     assert_response :success
+    json = JSON.parse response.body, symbolize_names: true
+
+    assert 1, json[:posts].count
+    assert 'The title', json[:posts][0][:title]
   end
 
   test 'fetch a post as json' do
