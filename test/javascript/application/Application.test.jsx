@@ -1,5 +1,5 @@
 import React from 'react'
-import {display, assert_select} from '../helpers/ReactHelper'
+import {display, assert_select, resolveAllPromises} from '../helpers/ReactHelper'
 
 import {Application} from 'application/Application'
 
@@ -22,6 +22,8 @@ describe('The application', () => {
 
   test('shows a list of blog posts', async () => {
     const component = await display(<Application />)
+
+    await resolveAllPromises()
     component.update()
 
     assert_select(component, '.site-name',   'Blogging')

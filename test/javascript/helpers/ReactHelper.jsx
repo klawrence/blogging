@@ -22,3 +22,6 @@ export function assert_select(component, selector, expectation=1) {
       break
   }
 }
+
+// Need to call component.update() before doing assert checks on html after an async call
+export const resolveAllPromises = () => new Promise(setImmediate)

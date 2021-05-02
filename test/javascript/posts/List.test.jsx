@@ -1,5 +1,5 @@
 import React from 'react'
-import {display, assert_select} from '../helpers/ReactHelper'
+import {display, assert_select, resolveAllPromises} from '../helpers/ReactHelper'
 
 import {server} from 'remote/server'
 import {List} from 'posts/List'
@@ -28,6 +28,8 @@ describe('The post list', () => {
     server.send.mockReturnValue({posts})
 
     const component = await display(<ConnectedList />)
+
+    await resolveAllPromises()
     component.update()
 
     assert_select(component, '.posts-list .post', 1)
