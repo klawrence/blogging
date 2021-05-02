@@ -23,7 +23,6 @@ export default class ConnectedList extends React.Component {
   render() {
     const {posts} = this.state
     if(posts === null) return 'Loading…'
-
     return <List posts={posts} />
   }
 
