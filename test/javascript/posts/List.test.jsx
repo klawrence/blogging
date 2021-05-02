@@ -1,5 +1,5 @@
 import React from 'react'
-import {display, assert_select, resolveAllPromises} from '../helpers/ReactHelper'
+import {display, assert_select, resolveAllPromises, displayConnected} from '../helpers/ReactHelper'
 
 import {server} from 'remote/server'
 import {List} from 'posts/List'
@@ -27,10 +27,7 @@ describe('The post list', () => {
   test('fetches the list of blog posts from the server', async () => {
     server.send.mockReturnValue({posts})
 
-    const component = await display(<ConnectedList />)
-
-    await resolveAllPromises()
-    component.update()
+    const component = await displayConnected(<ConnectedList />)
 
     assert_select(component, '.posts-list .post', 1)
     expect(server.send).toBeCalledWith('/posts.json')

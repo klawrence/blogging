@@ -8,6 +8,15 @@ export function display(component) {
   return mount(component)
 }
 
+export async function displayConnected(component) {
+  const connected = mount(component)
+
+  await resolveAllPromises()
+  connected.update()
+
+  return connected
+}
+
 export function assert_select(component, selector, expectation=1) {
   const selected = component.find(selector)
   switch(typeof(expectation)) {

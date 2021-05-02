@@ -21,7 +21,7 @@ export default class ConnectedPost extends React.Component {
   }
 
   async componentDidMount() {
-    const post = await fetch(1)
+    const post = await fetch(this.props.id)
     this.setState({post})
   }
 }
