@@ -22,6 +22,6 @@ class Server {
 export const server = new Server()
 
 export function getCSRFToken() {
-  const csrfTag = document.querySelector('meta[name=csrf-token]') || {content: 'missing-csrf-token'}
-  return csrfTag.content
+  const csrfTag = document.querySelector('meta[name=csrf-token]')
+  return csrfTag?.content || 'missing-csrf-token'
 }
