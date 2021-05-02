@@ -28,4 +28,15 @@ describe('The post store', () => {
 
     expect(server.send).toBeCalledWith('/posts.json')
   })
+
+  test('notify subscribers when a post is added to the store', async () => {
+    const subscriber = jest.fn()
+    store.subscribe(subscriber)
+
+    store.addAndNotify(post)
+
+    expect(subscriber).toBeCalled()
+    expect(store.all[0]).toEqual(post)
+  })
+
 })
