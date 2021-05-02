@@ -17,13 +17,13 @@ describe('The application', () => {
     server.send.mockReturnValue({posts: [post]})
   })
 
-  test('shows the first blog post', async () => {
+  test('shows a list of blog posts', async () => {
     const component = await display(<Application />)
     component.update()
 
     assert_select(component, '.site-name',   'Blogging')
-    assert_select(component, '.post .title', 'React on Rails')
-    assert_select(component, '.post .body',  'I can use React with Rails.')
+    assert_select(component, '.posts-list .post .title', 'React on Rails')
+    assert_select(component, '.posts-list .post .body',  'I can use React with Rails.')
 
     const calls = server.send.mock.calls
     expect(calls.length).toBe(1)

@@ -14,7 +14,7 @@ export default class List extends React.Component {
     const {posts} = this.state
     if(posts === null) return 'Loading…'
 
-    return <ul>
+    return <ul className='posts-list'>
       {
         posts.map(post => <li key={post.id}>
           <Post post={post}/>
