@@ -1,8 +1,11 @@
 import React from 'react'
+import {store} from './Store'
 
 export default class Editor extends React.Component {
   constructor(props) {
     super(props)
+
+    this.store = this.props.store || store
     this.state = {
       post: {}
     }
@@ -32,11 +35,10 @@ export default class Editor extends React.Component {
     this.setState({post})
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault()
 
     const {post} = this.state
-    const {onSubmit} = this.props
-    onSubmit && onSubmit(post)
+    await this.store.create(post)
   }
 }

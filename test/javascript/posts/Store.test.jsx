@@ -57,4 +57,15 @@ describe('The post store', () => {
     expect(server.send).toHaveBeenCalledTimes(0)
   })
 
+
+  test('create a post and add it to the store', async () => {
+    const new_post = {title: 'title', body: 'body'}
+    server.send.mockReturnValue({id: 123, ...new_post})
+
+    const created = await store.create(new_post)
+    expect(123).toEqual(created.id)
+
+    expect(server.send).toBeCalledWith('/posts.json', 'post', {post: new_post})
+  })
+
 })

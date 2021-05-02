@@ -1,4 +1,4 @@
-import {list, fetch} from './api'
+import {list, fetch, create} from './api'
 
 export class Store {
   constructor() {
@@ -19,6 +19,13 @@ export class Store {
       post = await fetch(id)
       this.addAndNotify(post)
     }
+    return post
+  }
+
+  async create(post) {
+    post = await create(post)
+    // todo don't add it to the store unless it is valid
+    this.addAndNotify(post)
     return post
   }
 
