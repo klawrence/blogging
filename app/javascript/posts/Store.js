@@ -9,7 +9,7 @@ export class Store {
 
   async list() {
     const {posts} = await list()
-    this.all = posts
+    this.addAndNotify(posts)
     return posts
   }
 
@@ -22,10 +22,18 @@ export class Store {
     return post
   }
 
-  addAndNotify(post) {
-    this.by_id = {[post.id]: post}
+  addAndNotify(post_or_posts) {
+    if(Array.isArray(post_or_posts))
+      post_or_posts.forEach(post => this.add(post))
+    else
+      this.add(post_or_posts)
+
     this.all = Object.values(this.by_id) // TODO sort this by the default sort
     this.notify()
+  }
+
+  add(post) {
+    this.by_id = {[post.id]: post}
   }
 
   // extract this to a class
