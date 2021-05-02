@@ -40,7 +40,7 @@ export class Store {
   }
 
   add(post) {
-    this.by_id = {[post.id]: post}
+    this.by_id[post.id] = post
   }
 
   // extract this to a class
