@@ -8,13 +8,16 @@ import {server} from 'remote/server'
 describe('The application', () => {
   server.send = jest.fn()
 
+  const post = {
+    id: 1,
+    title: 'React on Rails',
+    body: 'I can use React with Rails.',
+  }
+
+  const posts = [post]
+
   beforeEach( () => {
-    const post = {
-      id: 1,
-      title: 'React on Rails',
-      body: 'I can use React with Rails.',
-    }
-    server.send.mockReturnValue({posts: [post]})
+    server.send.mockReturnValue({posts})
   })
 
   test('shows a list of blog posts', async () => {
@@ -22,11 +25,9 @@ describe('The application', () => {
     component.update()
 
     assert_select(component, '.site-name',   'Blogging')
-    assert_select(component, '.posts-list .post .title', 'React on Rails')
-    assert_select(component, '.posts-list .post .body',  'I can use React with Rails.')
+    assert_select(component, '.post .title', 'React on Rails')
+    assert_select(component, '.post .body',  'I can use React with Rails.')
 
-    const calls = server.send.mock.calls
-    expect(calls.length).toBe(1)
-    expect(calls[0]).toEqual(['/posts.json'])
+    expect(server.send).toBeCalledWith('/posts.json')
   })
 })
