@@ -15,9 +15,13 @@ export function List({posts}) {
 export default class ConnectedList extends React.Component {
   constructor(props) {
     super(props)
+
+    this.store = this.props.store || store
     this.state = {
       posts: null
     }
+
+    this.storeDidUpdate = this.storeDidUpdate.bind(this)
   }
 
   render() {
@@ -27,7 +31,17 @@ export default class ConnectedList extends React.Component {
   }
 
   async componentDidMount() {
-    const posts = await store.list()
+    const posts = await this.store.list()
+    this.setState({posts})
+    this.store.subscribe(this.storeDidUpdate)
+  }
+
+  componentWillUnmount() {
+    this.store.unsubscribe(this.storeDidUpdate)
+  }
+
+  storeDidUpdate() {
+    const posts = this.store.all
     this.setState({posts})
   }
 }

@@ -2,11 +2,12 @@ import React from 'react'
 import {display, assert_select, resolveAllPromises, displayConnected} from '../helpers/ReactHelper'
 
 import {server} from 'remote/server'
-import {List} from 'posts/List'
-import ConnectedList from 'posts/List'
+import ConnectedList, {List} from 'posts/List'
+import {Store} from 'posts/Store'
 
 describe('The post list', () => {
   server.send = jest.fn()
+  let store
 
   const post = {
     id: 1,
@@ -15,6 +16,10 @@ describe('The post list', () => {
   }
 
   const posts = [post]
+
+  beforeEach( () => {
+    store = new Store()
+  })
 
   test('shows a list of blog posts', async () => {
     const component = await display(<List posts={posts}/>)
@@ -27,9 +32,20 @@ describe('The post list', () => {
   test('fetches the list of blog posts from the server', async () => {
     server.send.mockReturnValue({posts})
 
-    const component = await displayConnected(<ConnectedList />)
+    const component = await displayConnected(<ConnectedList store={store} />)
 
     assert_select(component, '.posts-list .post', 1)
     expect(server.send).toBeCalledWith('/posts.json')
+  })
+
+  test('updates the list when a post is added to the store', async () => {
+    server.send.mockReturnValue({posts: []})
+
+    const component = await displayConnected(<ConnectedList store={store} />)
+    assert_select(component, '.post', 0)
+
+    store.addAndNotify(post)
+    component.update()
+    assert_select(component, '.post', 1)
   })
 })

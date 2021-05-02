@@ -13,7 +13,7 @@ export class Store {
   }
 
   addAndNotify(post) {
-    this.all = [post]
+    this.all = [...this.all, post]
     this.notify()
   }
 
