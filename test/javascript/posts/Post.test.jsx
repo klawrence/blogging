@@ -1,5 +1,5 @@
 import React from 'react'
-import {display, assert_select, resolveAllPromises, displayConnected} from '../helpers/ReactHelper'
+import {display, assert_select, displayConnected} from '../helpers/ReactHelper'
 
 import {Post} from 'posts/Post'
 import ConnectedPost from 'posts/Post'
