@@ -29,7 +29,7 @@ describe('The post store', () => {
     expect(server.send).toBeCalledWith('/posts.json')
   })
 
-  test('notify subscribers when a post is added to the store', async () => {
+  test('notifies subscribers when a post is added to the store', async () => {
     const subscriber = jest.fn()
     store.subscribe(subscriber)
 
@@ -37,6 +37,24 @@ describe('The post store', () => {
 
     expect(subscriber).toBeCalled()
     expect(store.all[0]).toEqual(post)
+  })
+
+  test('can fetch a single post', async () => {
+    server.send.mockReturnValue(post)
+
+    const found = await store.find(1)
+    expect(found).toEqual(post)
+
+    expect(server.send).toBeCalledWith('/posts/1.json')
+  })
+
+  test('returns a local copy of a post if it has one', async () => {
+    store.addAndNotify(post)
+
+    const found = await store.find(1)
+    expect(found).toEqual(post)
+
+    expect(server.send).toHaveBeenCalledTimes(0)
   })
 
 })
