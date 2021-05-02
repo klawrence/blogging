@@ -9,6 +9,6 @@ export function list() {
 }
 
 export function create(post) {
-  return server.post('/posts.json', 'post', {post})
+  return server.post('/posts.json', {post})
 }
 
