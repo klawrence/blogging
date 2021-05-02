@@ -1,5 +1,5 @@
 import React from 'react'
-import {fetch, list} from './api'
+import {list} from './api'
 import {Post} from './Post'
 
 export default class List extends React.Component {
@@ -24,7 +24,7 @@ export default class List extends React.Component {
   }
 
   async componentDidMount() {
-    const posts = list()
-    this.setState({posts})
+    const response = await list()
+    this.setState({posts: response.posts})
   }
 }
