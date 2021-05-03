@@ -2,7 +2,10 @@ require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @post = Post.create! title: 'The title', body: 'The body.'
+    @sally = User.create! email: 'sally@example.com',
+                          password: 'letmein'
+    @post = Post.create! title: 'The title',
+                         body: 'The body.'
   end
 
   test 'the index page just returns the react application' do
@@ -29,7 +32,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'The body.', json[:body]
   end
 
+  test 'create a blog post requires a sign in' do
+    post posts_url(format: :json), params: {
+        post: {
+            title: 'A new day',
+            body: 'First post!'
+        }
+    }
+    assert_redirected_to root_url
+  end
+
   test 'create a blog post' do
+    sign_in @sally
     post posts_url(format: :json), params: {
         post: {
             title: 'A new day',
