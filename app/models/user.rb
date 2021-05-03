@@ -12,4 +12,6 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: true,
             format: /\A[^@]+@[^@]+\.[^@]+\z/i
+
+  scope :by_name, -> { order :name }
 end
