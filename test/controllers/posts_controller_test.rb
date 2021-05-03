@@ -2,10 +2,8 @@ require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @sally = User.create! email: 'sally@example.com',
-                          password: 'letmein'
-    @post = Post.create! title: 'The title',
-                         body: 'The body.'
+    @sally = create_user 'Sally'
+    @post = Post.create! title: 'The title', body: 'The body.'
   end
 
   test 'the index page just returns the react application' do

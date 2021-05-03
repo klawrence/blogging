@@ -2,8 +2,7 @@ require "test_helper"
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @sally = User.create! email: 'sally@example.com',
-                          password: 'letmein'
+    @sally = create_user 'Sally', password: 'letmein'
   end
 
   test 'sign in renders a form' do

@@ -5,7 +5,8 @@ Dir['test/test_helpers/*.rb'].each {|file| require file.sub(/^test\//, '') }
 
 class ActiveSupport::TestCase
   parallelize(workers: :number_of_processors)
-  fixtures :all
+
+  include TestHelpers::UserTestHelper
 end
 
 class ActionDispatch::IntegrationTest
