@@ -1,5 +1,7 @@
 import {Store} from 'posts/Store'
 import {server} from 'remote/server'
+import {assert_select, displayConnected} from '../helpers/ReactHelper'
+import React from 'react'
 
 describe('The post store', () => {
   let store
@@ -67,5 +69,29 @@ describe('The post store', () => {
 
     expect(server.send).toBeCalledWith('/posts.json', 'post', {post: new_post})
   })
+
+  test('posts should be sorted by date', async () => {
+    const one = {
+      id: 1,
+      title: 'One',
+      created_at: '2021-01-01T01:00:00.0Z'
+    }
+    const two = {
+      id: 2,
+      title: 'Two',
+      created_at: '2021-02-02T02:00:00.0Z'
+    }
+    const three = {
+      id: 3,
+      title: 'Three',
+      created_at: '2021-03-03T03:00:00.0Z'
+    }
+
+    const posts = [one, three, two]
+    store.addAndNotify(posts)
+
+    expect(store.all).toEqual([three, two, one])
+  })
+
 
 })

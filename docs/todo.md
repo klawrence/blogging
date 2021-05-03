@@ -1,7 +1,6 @@
 # TODO
 
 ## Next
-- sort the post list
 - show the editor in a dialog
 - add routes for the lists vs posts
 - add comments

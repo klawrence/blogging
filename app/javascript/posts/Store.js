@@ -1,4 +1,5 @@
 import {list, fetch, create} from './api'
+import {by_created_at} from './sorting'
 
 export class Store {
   constructor() {
@@ -35,7 +36,7 @@ export class Store {
     else
       this.add(post_or_posts)
 
-    this.all = Object.values(this.by_id) // TODO sort this by the default sort
+    this.all = Object.values(this.by_id).sort(by_created_at)
     this.notify()
   }
 
