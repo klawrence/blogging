@@ -1,0 +1,19 @@
+<div class='session-page'>
+  <div class='session-panel'>
+    <h1>Sign in</h1>
+
+    <%= form_for :credentials, url: {action: :create}, html: {class: 'form'} do |form| %>
+      <div class='input email'>
+        <%= form.label :email %>
+        <%= form.email_field :email, required: true, autofocus: true, placeholder: 'Enter your email address' %>
+      </div>
+      <div class='input password'>
+        <%= form.label :password %>
+        <%= form.password_field :password, required: true, placeholder: 'Enter your password' %>
+      </div>
+      <div class='actions'>
+        <%= form.submit 'Sign in', class: 'button submit primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

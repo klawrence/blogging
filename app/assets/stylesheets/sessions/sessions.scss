@@ -1,0 +1,19 @@
+@import 'constants';
+
+.session-page {
+  margin: $margin;
+
+  .session-panel {
+    margin: $margin*2 auto;
+    padding: $margin;
+    border: $border;
+    border-radius: $border-radius;
+    width: 25em;
+    max-width: 100%;
+    background-color: white;
+  }
+
+  h1 {
+    margin: 0 0 $margin 0;
+  }
+}
