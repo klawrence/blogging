@@ -2,7 +2,7 @@ import {server} from 'react-to-rails/server'
 import React from 'react'
 import Store from 'react-to-rails/Store'
 
-describe('The post store', () => {
+describe('A post store', () => {
   let store
   server.send = jest.fn()
   const post = {
