@@ -1,6 +1,4 @@
 import React from 'react'
-import {store} from '../../posts/store'
-import {Post} from '../../posts/Post'
 
 export function connectView(WrappedView, store) {
   return class extends React.Component {
