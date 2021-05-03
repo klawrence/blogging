@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  skip_before_action :require_login, only: [:index, :show]
   before_action :set_post, only: :show
 
   def index
