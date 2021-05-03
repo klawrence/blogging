@@ -5,9 +5,7 @@ export function connectList(WrappedList, store) {
     constructor(props) {
       super(props)
 
-      // Allow a store to be passed in as a property for testing
       this.store = props.store || store
-
       this.state = {
         records: null
       }
