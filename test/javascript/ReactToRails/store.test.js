@@ -1,6 +1,6 @@
 import {server} from 'react-to-rails/server'
 import React from 'react'
-import Store from 'react-to-rails/Store'
+import Store from 'react-to-rails/store'
 
 describe('A post store', () => {
   let store
