@@ -1,7 +1,7 @@
 import React from 'react'
 import {display, assert_select} from '../helpers/ReactHelper'
 import Editor from 'posts/Editor'
-import Store from 'react-to-rails/Store'
+import Store from 'react-to-rails/store'
 import {server} from 'react-to-rails/server'
 import {signIn, signOut} from 'users/current_user'
 

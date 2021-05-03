@@ -3,7 +3,7 @@ import {display, assert_select, displayConnected} from '../helpers/ReactHelper'
 
 import {server} from 'react-to-rails/server'
 
-import ConnectedUser from 'users/user'
+import ConnectedUser from 'users/User'
 import {User} from 'users/User'
 
 describe('The user component', () => {
