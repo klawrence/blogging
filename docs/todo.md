@@ -1,5 +1,14 @@
 # TODO
 
+## Next
+- sort the post list
+- show the editor in a dialog
+- add routes for the lists vs posts
+- add comments
+- generalize the store  
+- add users?
+- add sign in? 
+
 ## Blogging
 - Show a post
 - Create a post
@@ -20,7 +29,7 @@
 - Add an index post.
 
 ## Thoughts
-- Use rails actions names for API
+- Use rails action names for API
 - Keep track of load status of models
 - Add methods to models so you can call back
 - Manage a dispatch list

@@ -21,8 +21,8 @@ describe('The post list', () => {
     store = new Store()
   })
 
-  test('shows a list of blog posts', async () => {
-    const component = await display(<List posts={posts}/>)
+  test('shows a list of blog posts', () => {
+    const component = display(<List posts={posts}/>)
 
     assert_select(component, '.posts-list .post', 1)
     assert_select(component, '.post .title', 'React on Rails')
