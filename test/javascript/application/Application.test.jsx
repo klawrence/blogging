@@ -3,7 +3,7 @@ import {display, assert_select, resolveAllPromises} from '../helpers/ReactHelper
 
 import {Application} from 'application/Application'
 
-import {server} from 'remote/server'
+import {server} from 'react-to-rails/server'
 
 describe('The application', () => {
   server.send = jest.fn()

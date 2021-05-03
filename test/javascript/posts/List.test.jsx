@@ -1,9 +1,9 @@
 import React from 'react'
-import {display, assert_select, resolveAllPromises, displayConnected} from '../helpers/ReactHelper'
+import {display, assert_select, displayConnected} from '../helpers/ReactHelper'
 
-import {server} from 'remote/server'
+import Store from 'react-to-rails/store'
+import {server} from 'react-to-rails/server'
 import ConnectedList, {List} from 'posts/List'
-import {Store} from 'posts/Store'
 
 describe('The post list', () => {
   server.send = jest.fn()
@@ -18,7 +18,7 @@ describe('The post list', () => {
   const posts = [post]
 
   beforeEach( () => {
-    store = new Store()
+    store = new Store('post')
   })
 
   test('shows a list of blog posts', () => {

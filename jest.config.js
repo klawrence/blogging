@@ -8,6 +8,7 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: "test/results/coverage",
   testMatch: [
+    "**/*.test.js",
     "**/*.test.jsx",
   ],
 }

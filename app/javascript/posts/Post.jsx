@@ -1,5 +1,4 @@
 import React from 'react'
-import {fetch} from './api'
 import {store} from './Store'
 
 export function Post({post}) {

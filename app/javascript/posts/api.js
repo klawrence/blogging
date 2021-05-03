@@ -1,4 +1,4 @@
-import {server} from 'remote/server'
+import {server} from 'react-to-rails/server'
 
 export function fetch(id) {
   return server.get(`/posts/${id}.json`)

@@ -1,8 +1,8 @@
 import React from 'react'
 import {display, assert_select} from '../helpers/ReactHelper'
 import Editor from 'posts/Editor'
-import {Store} from 'posts/Store'
-import {server} from 'remote/server'
+import Store from 'react-to-rails/Store'
+import {server} from 'react-to-rails/server'
 import {signIn, signOut} from 'users/current_user'
 
 describe('The post editor', () => {
@@ -23,7 +23,7 @@ describe('The post editor', () => {
   })
 
   test('updates the post details', async () => {
-    const store = new Store()
+    const store = new Store('post')
     const component = display(<Editor store={store} />)
 
     const title = component.find('.title')

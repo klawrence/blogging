@@ -1,7 +1,6 @@
-import {Store} from 'posts/Store'
-import {server} from 'remote/server'
-import {assert_select, displayConnected} from '../helpers/ReactHelper'
+import {server} from 'react-to-rails/server'
 import React from 'react'
+import Store from 'react-to-rails/Store'
 
 describe('The post store', () => {
   let store
@@ -13,7 +12,7 @@ describe('The post store', () => {
   }
 
   beforeEach( () => {
-    store = new Store()
+    store = new Store('post')
   })
 
   test('is initially empty', () => {

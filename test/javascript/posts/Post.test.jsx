@@ -3,7 +3,7 @@ import {display, assert_select, displayConnected} from '../helpers/ReactHelper'
 
 import {Post} from 'posts/Post'
 import ConnectedPost from 'posts/Post'
-import {server} from 'remote/server'
+import {server} from 'react-to-rails/server'
 
 describe('The post component', () => {
   server.send = jest.fn()
