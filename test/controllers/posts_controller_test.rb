@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -15,8 +15,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'fetch a list of posts as json' do
     get posts_url(format: :json)
-    assert_response :success
-    json = JSON.parse response.body, symbolize_names: true
+    json = json_response
 
     assert 1, json[:posts].count
     assert 'The title', json[:posts][0][:title]
@@ -24,9 +23,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'fetch a post as json' do
     get post_url(@post, format: :json)
-    assert_response :success
+    json = json_response
 
-    json = JSON.parse response.body, symbolize_names: true
     assert_equal @post.id, json[:id]
     assert_equal 'The title', json[:title]
     assert_equal 'The body.', json[:body]
@@ -50,8 +48,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
             body: 'First post!'
         }
     }
-    assert_response :success
-    json = JSON.parse response.body, symbolize_names: true
+    json = json_response
 
     # The post was created
     @post = Post.last

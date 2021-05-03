@@ -1,5 +1,6 @@
 import React from 'react'
 import {store} from './Store'
+import {signedIn} from '../users/current_user'
 
 export default class Editor extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ export default class Editor extends React.Component {
 
   render() {
     const {post} = this.state
+
+    if(!signedIn()) return null
 
     return <form onChange={this.handleChange}
                  onSubmit={this.handleSubmit}>

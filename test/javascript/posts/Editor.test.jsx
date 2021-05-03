@@ -3,9 +3,18 @@ import {display, assert_select} from '../helpers/ReactHelper'
 import Editor from 'posts/Editor'
 import {Store} from 'posts/Store'
 import {server} from 'remote/server'
+import {signIn, signOut} from 'users/current_user'
 
 describe('The post editor', () => {
   server.send = jest.fn()
+
+  beforeEach( () => {
+    signIn()
+  })
+
+  afterEach( () => {
+    signOut()
+  })
 
   test('displays a form', () => {
     const component = display(<Editor />)
