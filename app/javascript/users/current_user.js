@@ -2,8 +2,8 @@ const current_user = {
   id: null,
 }
 
-export function signIn(id) {
-  current_user.id = id || true
+export function signIn(id=true) {
+  current_user.id = id
 }
 
 export function signOut() {
