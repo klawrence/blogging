@@ -1,5 +1,5 @@
 import React from 'react'
-import {store} from './Store'
+import {store} from './store'
 
 export function Post({post}) {
   return <div className='post'>

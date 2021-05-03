@@ -1,5 +1,5 @@
 import React from 'react'
-import {store} from './Store'
+import {store} from './store'
 import {Post} from './Post'
 
 export function List({posts}) {

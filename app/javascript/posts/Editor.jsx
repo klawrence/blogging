@@ -1,5 +1,5 @@
 import React from 'react'
-import {store} from './Store'
+import {store} from './store'
 import {signedIn} from '../users/current_user'
 
 export default class Editor extends React.Component {
