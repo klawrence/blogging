@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
   before_action :set_post, only: :show
 
+  layout 'react'
+
   def index
     @posts = Post.all.order(created_at: :desc)
   end

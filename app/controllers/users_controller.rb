@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :require_admin, except: :show
   before_action :set_user, except: :index
 
+  layout 'react'
+
   def index
     @users = User.by_name
   end

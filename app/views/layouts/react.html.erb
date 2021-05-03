@@ -1,0 +1,5 @@
+<% content_for :body do %>
+  <div id='react' data-user-id='<%= current_user&.id%>' />
+<% end %>
+
+<%= render template: 'layouts/application' %>
