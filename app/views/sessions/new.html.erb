@@ -3,9 +3,17 @@
     <h1>Sign in</h1>
 
     <%= form_for :credentials, url: {action: :create}, html: {class: 'form'} do |form| %>
+      <div class='error'>
+        <%= t @error %>
+      </div>
       <div class='input email'>
         <%= form.label :email %>
-        <%= form.email_field :email, required: true, autofocus: true, placeholder: 'Enter your email address' %>
+        <%= form.email_field :email,
+                             value: @email,
+                             required: true,
+                             autofocus: true,
+                             placeholder: 'Enter your email address'
+        %>
       </div>
       <div class='input password'>
         <%= form.label :password %>
