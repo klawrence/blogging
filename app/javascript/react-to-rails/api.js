@@ -13,10 +13,14 @@ export function create(type, record) {
 }
 
 function pathToShow(type, id) {
-  return `/${type}s/${id}.json`
+  return `/${pluralize(type)}/${id}.json`
 }
 
 function pathToIndex(type) {
-  return `/${type}s.json`
+  return `/${pluralize(type)}.json`
+}
+
+export function pluralize(type) {
+  return `${type}s`
 }
 

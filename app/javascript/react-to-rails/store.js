@@ -1,10 +1,10 @@
-import {list, fetch, create} from './api'
+import {list, fetch, create, pluralize} from './api'
 import {by_created_at} from './sorting'
 
 export default class Store {
   constructor(type) {
     this.type = type
-    this.plural = `${type}s`
+    this.plural = pluralize(type)
     this.all = []
     this.by_id = {}
     this.subscribers = []
