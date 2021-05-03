@@ -11,6 +11,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_select '#react'
   end
 
+  test 'include the current user id if signed in' do
+    sign_in @sally
+    get posts_url
+    assert_select '#react' do |elements|
+      assert_equal @sally.id.to_s, elements[0]['data-user-id']
+    end
+  end
+
   test 'fetch a list of posts as json' do
     get posts_url(format: :json)
     json = json_response
