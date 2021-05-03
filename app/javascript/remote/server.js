@@ -1,4 +1,5 @@
 import * as axios from 'axios'
+import {getCSRFToken} from '../lib/dom'
 
 class Server {
   get(url)        { return this.send(url)}
